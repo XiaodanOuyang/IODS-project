@@ -11,4 +11,4 @@ date()
 ```
 The text continues here.
 
-# an interesting and useful course for me as a beginner!https://github.com/XiaodanOuyang/IODS-project
+# An interesting and useful course for me as a beginner! Although it is difficult for me at the beginning, I will try my best to do it.https://github.com/XiaodanOuyang/IODS-project
