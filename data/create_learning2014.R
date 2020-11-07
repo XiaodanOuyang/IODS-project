@@ -52,44 +52,11 @@ str(learning2014)
 dim(learning2014)
 # select rows where points is greater than zero
 learning2014 <- filter(learning2014,Points>0)
+options(max.print=1000000) 
 learning2014
 dim(learning2014)
-write.csv(learning2014,'learning2014.csv')
-learning2014<-read.csv(file = 'data/learning2014.csv')
+write.csv(learning2014,file ="learning2014.csv",row.names = FALSE)
+learning2014<-read.csv(file = "data/learning2014.csv")
 learning2014
 dim(learning2014)
-?write.csv
-lrn14$Attitude
-write.csv(lrn14$Attitude,'lrn14$Attitude.csv')
 
-lrn14$Attitude<-read.csv(file = 'data/lrn14$Attitude.csv')
-head(lrn14$Attitude)
-str(lrn14$Attitude)
-lrn14$gender
-write.csv(lrn14$gender,'lrn14$gender.csv')
-lrn14$gender<-read.csv(file = 'data/lrn14$gender.csv')
-head(lrn14$gender)
-str(lrn14$gender)
-write.csv(lrn14$Age,'lrn14$Age.csv')
-lrn14$Age<-read.csv(file = 'data/lrn14$Age.csv')
-head(lrn14$Age)
-str(lrn14$Age)
-write.csv(lrn14$Points,'lrn14$Points.csv')
-lrn14$Points<-read.csv(file = 'data/lrn14$Points.csv')
-head(lrn14$Points)
-str(lrn14$Points)
-write.csv(lrn14$deep,'lrn14$deep.csv')
-lrn14$deep<-read.csv(file = 'data/lrn14$deep.csv')
-lrn14$deep
-head(lrn14$deep)
-str(lrn14$deep)
-write.csv(lrn14$surf,'lrn14$surf.csv')
-lrn14$surf<-read.csv(file = 'data/lrn14$surf.csv')
-lrn14$surf
-head(lrn14$surf)
-str(lrn14$surf)
-write.csv(lrn14$stra,'lrn14$stra.csv')
-lrn14$stra<-read.csv(file = 'data/lrn14$stra.csv')
-lrn14$stra
-head(lrn14$stra)
-str(lrn14$stra)
