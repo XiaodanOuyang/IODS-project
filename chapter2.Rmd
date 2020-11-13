@@ -207,7 +207,7 @@ pairs(learning2014[-1])
 # create a more advanced plot matrix with ggpairs()
 p <- ggpairs(learning2014, mapping = aes(col = gender), lower = list(combo = wrap("facethist", bins = 20)))
 p
-![alt text here.](C:/Users/16644/Desktop/ggpairs of 2014.png)
+![alt text here.](D:/open science R/IODS-project/Rplot01.png)
 # The relationship between varibles are shown in the the picture above
 # create a regression model with three explanatory variables
 my_model2 <- lm(points ~ attitude + stra + surf , data = learning2014)
