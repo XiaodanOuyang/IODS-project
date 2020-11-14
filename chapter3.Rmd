@@ -9,7 +9,7 @@
 ```{r}
 date()
 ```
-#Read the joined student alcohol consumption data into R either from your local folder
+*2.Read the joined student alcohol consumption data into R either from your local folder*
 Here is some code
 ```{r}
 # access the dplyr library
@@ -24,4 +24,30 @@ glimpse(alc)
 colnames(alc)
 ```
 
-#Those are the names of the variables,we can choose "high_use" as a target varible and other 4 interesting variables in the data and for each of them, present hypothesis about their relationships with alcohol consumption.
+*3.Those are the names of the variables,we can choose "high_use" as a target varible and other 4 interesting variables in the data and for each of them, present hypothesis about their relationships with alcohol consumption.*  
+I will choose sex,guardian,age and internet. I guess males and older people are tend to drink more alcohol.And if the guardian is father, their children might tend to drink more alcohol and for those who sulf the internet more times, the more possibility they will drink alcohol.  
+*4.Numerically and graphically explore the distributions of your chosen variables and their relationships with alcohol consumption.
+```{r}
+library(dplyr); library(ggplot2)
+alc <- mutate(alc, alc_use = (Dalc + Walc) / 2)
+alc <- mutate(alc, high_use = alc_use > 2)
+g1 <- ggplot(data = alc, aes(x = alc_use,fill=sex))
+g1 + geom_bar()
+g2 <- ggplot(data = alc, aes(x = alc_use,fill=guardian ))
+g2+ geom_bar()
+g3 <- ggplot(data = alc, aes(x= age))
+g3+ geom_bar()  
+g4 <- ggplot(data = alc, aes(x = alc_use,fill=internet ))
+g4+ geom_bar() 
+```
+
+From figures above, as I predict,males tend to drink more alcohol.And for children whose guardian is mother, they like drinking more, which is opposite to my predictions.People who are 16 years old take a lagre part of drinking alcohol.This is not as expected neither. And students who spend much time on the internet are likely to drink more.  
+*5.Use logistic regression to statistically explore the relationship between your chosen variables and the binary high/low alcohol consumption variable as the target variable.Use logistic regression to statistically explore the relationship between your chosen variables and the binary high/low alcohol consumption variable as the target variable.*
+```{r}
+m <- glm(high_use ~sex+guardian+age+internet, data = alc, family = "binomial")
+OR <- coef(m) %>% exp
+confint(m)
+CI<-exp(confint(m))
+cbind(OR, CI)
+```
+*6.explore the predictive power of you model. Provide a 2x2 cross tabulation of predictions versus the actual values and optionally display a graphic visualizing both the actual values and the predictions.* 
