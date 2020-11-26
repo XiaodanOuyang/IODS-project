@@ -35,7 +35,7 @@ boston_scaled <- as.data.frame(boston_scaled)
 
 # summary of the scaled crime rate
 
-summary(crime)
+summary(boston_scaled$crim)
 # create a quantile vector of crim and print it
 bins <- quantile(boston_scaled$crim)
 bins
