@@ -4,19 +4,25 @@ author: "Xiaodan Ouyang"
 date: "2020/11/26"
 output: html_document
 ---
+*1.Show a graphical overview of the data and show summaries of the variables in the data.*
+```{r}
+human<-read.csv(file = "data/human.csv")
+ggpairs(human,cardinality_threshold=155)
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+*2.Perform principal component analysis (PCA) on the not standardized human data. Show the variability captured by the principal components. Draw a biplot displaying the observations by the first two principal components (PC1 coordinate in x-axis, PC2 coordinate in y-axis)* 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+str(human)
+human$GNI <- as.numeric(as.character(human$GNI))
+human$Mat.Mor<- as.numeric(as.character(human$Mat.Mor))
+cor(human) %>% corrplot
+human_std <- scale(human)
+summary(human_std)
+pca_human <- prcomp(human_std)
+biplot(pca_human, choices = 1:2,cex = c(0.8, 1),col = c("grey40", "deeppink2"))
 ```
 
 ## Including Plots
